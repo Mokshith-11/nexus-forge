@@ -8,3 +8,4 @@ build
 .vercel
 coverage
 next-env.d.ts
+scripts/daily-sync.log
