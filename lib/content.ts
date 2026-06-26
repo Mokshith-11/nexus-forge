@@ -273,17 +273,6 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export type Member = { name: string; role: string; initials: string };
-
-export const TEAM: Member[] = [
-  { name: "Rohan Mehta", role: "Founder · AI Strategy", initials: "RM" },
-  { name: "Ananya Iyer", role: "Head of Automation", initials: "AI" },
-  { name: "Daniel Cho", role: "Lead Engineer", initials: "DC" },
-  { name: "Zara Khan", role: "Content Director", initials: "ZK" },
-  { name: "Marco Rossi", role: "Design Lead", initials: "MR" },
-  { name: "Lena Novak", role: "Data & Insights", initials: "LN" },
-];
-
 export type FaqItem = { q: string; a: string };
 
 export const FAQ: FaqItem[] = [
@@ -330,7 +319,6 @@ export const SCENES = [
   { id: "why", label: "Why Us" },
   { id: "stats", label: "Stats" },
   { id: "testimonials", label: "Voices" },
-  { id: "team", label: "Team" },
   { id: "faq", label: "FAQ" },
   { id: "contact", label: "Contact" },
 ];

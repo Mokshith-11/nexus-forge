@@ -78,7 +78,7 @@ export default function Hero() {
             <SplitText
               as="span"
               text="AI."
-              className="inline italic text-muted-gradient"
+              className="inline italic text-white"
               delay={0.45}
             />
           </span>
