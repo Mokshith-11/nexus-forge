@@ -299,7 +299,7 @@ export const FAQ: FaqItem[] = [
 ];
 
 export const CONTACT = {
-  email: "hello@nexusforge.ai",
+  email: "hello@nexusforge.in",
   status: "Available for projects",
 };
 

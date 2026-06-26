@@ -1,10 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://nexus-forge.vercel.app");
+  process.env.NEXT_PUBLIC_SITE_URL || "https://nexusforge.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

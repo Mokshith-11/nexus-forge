@@ -34,10 +34,7 @@ const mono = JetBrains_Mono({
  * preview URL, then the project's vercel.app subdomain for local/preview use.
  */
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://nexus-forge.vercel.app");
+  process.env.NEXT_PUBLIC_SITE_URL || "https://nexusforge.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -88,7 +85,7 @@ const jsonLd = {
   description:
     "An all-in-one AI automation agency — automation, AI agents, content, web development, and analytics.",
   url: SITE_URL,
-  email: "hello@nexusforge.ai",
+  email: "hello@nexusforge.in",
   sameAs: [
     "https://twitter.com/nexusforge",
     "https://linkedin.com/company/nexusforge",
