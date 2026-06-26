@@ -37,10 +37,10 @@ export default function Navbar() {
       >
         <a
           href="#hero"
-          className="display text-lg tracking-[0.22em] text-white"
-          aria-label="ÆTHER home"
+          className="label text-white"
+          aria-label="Nexus Forge home"
         >
-          ÆTHER
+          NEXUS FORGE
         </a>
 
         <ul className="hidden items-center gap-7 md:flex">
@@ -63,7 +63,7 @@ export default function Navbar() {
             href="#contact"
             className="glass rounded-full px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
           >
-            Start a project
+            Get Started
           </MagneticButton>
         </div>
 
@@ -101,7 +101,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-block rounded-full bg-white px-5 py-2 text-black"
               >
-                Start a project
+                Get Started
               </a>
             </li>
           </ul>

@@ -27,17 +27,17 @@ function Orb() {
   });
 
   return (
-    <Float speed={1.4} rotationIntensity={0.4} floatIntensity={1.1}>
+    <Float speed={1.2} rotationIntensity={0.35} floatIntensity={0.9}>
       <mesh ref={mesh} scale={2.05}>
         <icosahedronGeometry args={[1, 24]} />
         <MeshDistortMaterial
-          color="#4f7cff"
-          emissive="#2b1b6b"
-          emissiveIntensity={0.55}
-          roughness={0.18}
-          metalness={0.9}
-          distort={0.38}
-          speed={1.6}
+          color="#1c1c20"
+          emissive="#0a0a0c"
+          emissiveIntensity={0.2}
+          roughness={0.32}
+          metalness={1}
+          distort={0.34}
+          speed={1.3}
         />
       </mesh>
     </Float>
@@ -74,10 +74,10 @@ function Particles({ count }: { count: number }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.022}
-        color="#cdd6ff"
+        size={0.018}
+        color="#d8d6cf"
         transparent
-        opacity={0.75}
+        opacity={0.6}
         sizeAttenuation
         depthWrite={false}
       />
@@ -88,7 +88,7 @@ function Particles({ count }: { count: number }) {
 export default function HeroCanvas() {
   const isSmall =
     typeof window !== "undefined" && window.innerWidth < 768;
-  const particleCount = isSmall ? 420 : 1100;
+  const particleCount = isSmall ? 320 : 800;
 
   return (
     <Canvas
@@ -96,9 +96,9 @@ export default function HeroCanvas() {
       camera={{ position: [0, 0, 6], fov: 45 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 5, 5]} intensity={1.4} color="#9a7cff" />
-      <pointLight position={[-6, -3, -2]} intensity={2.4} color="#4f7cff" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={1.6} color="#ffffff" />
+      <pointLight position={[-6, -3, -2]} intensity={1.8} color="#cfcabd" />
       <Orb />
       <Particles count={particleCount} />
     </Canvas>

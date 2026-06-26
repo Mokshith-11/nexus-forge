@@ -8,11 +8,9 @@ export default function Team() {
   return (
     <section id="team" className="relative mx-auto max-w-7xl px-6 py-28">
       <div className="mb-14 max-w-2xl">
-        <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-2)]">
-          Team
-        </p>
+        <p className="label">Team</p>
         <h2 className="display mt-3 text-4xl text-white sm:text-6xl">
-          The people behind ÆTHER
+          The people behind Nexus Forge.
         </h2>
       </div>
 
@@ -26,7 +24,7 @@ export default function Team() {
               {/* Portrait placeholder built from initials + gradient */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 grid place-items-center bg-[radial-gradient(circle_at_50%_30%,#1c2350,#0a0a14)] transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 grid place-items-center bg-[radial-gradient(circle_at_50%_30%,#1d1d22,#0a0a0c)] transition-transform duration-700 group-hover:scale-105"
               >
                 <span className="display text-6xl text-white/15 transition-colors duration-500 group-hover:text-white/30">
                   {member.initials}

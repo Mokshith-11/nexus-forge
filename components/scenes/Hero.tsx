@@ -11,20 +11,20 @@ const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
   ssr: false,
   loading: () => (
     <div className="absolute inset-0 grid place-items-center">
-      <div className="h-72 w-72 rounded-full bg-[radial-gradient(circle_at_35%_30%,#c9d4ff,#4f7cff_38%,#5b2bbf_78%,#1a0e3d)] blur-[2px]" />
+      <div className="h-72 w-72 rounded-full bg-[radial-gradient(circle_at_40%_35%,#26262b,#0c0c0e_70%)] blur-[2px]" />
     </div>
   ),
 });
 
-/** Fullscreen cinematic hero: 3D orb, particles, mouse-parallax light. */
+/** Fullscreen hero: minimal serif headline over a subtle monochrome 3D backdrop. */
 export default function Hero() {
   const lightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const onMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 40;
-      const y = (e.clientY / window.innerHeight - 0.5) * 40;
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
       if (lightRef.current) {
         lightRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       }
@@ -38,23 +38,20 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden"
     >
-      {/* Parallax gradient light */}
       <div
         ref={lightRef}
         aria-hidden="true"
-        className="absolute left-1/2 top-1/2 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="absolute left-1/2 top-1/2 h-[60vmax] w-[60vmax] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(79,124,255,0.20), rgba(154,124,255,0.10) 40%, transparent 68%)",
+            "radial-gradient(circle, rgba(255,255,255,0.06), transparent 65%)",
         }}
       />
 
-      {/* 3D layer */}
       <div className="absolute inset-0">
         <HeroCanvas />
       </div>
 
-      {/* Foreground content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -62,19 +59,27 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs text-[var(--text-2)]"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-          Available for new work — 2026
+          <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-medium tracking-wider text-black">
+            NEW
+          </span>
+          India&apos;s First All-in-One AI Agency
         </motion.span>
 
-        <h1 className="display mt-6 text-[clamp(2.8rem,9vw,7.5rem)] leading-[0.95] text-white">
-          <SplitText as="span" text="We craft worlds" className="block" />
+        <h1 className="display mt-8 text-[clamp(2.9rem,9vw,7.5rem)] font-light leading-[0.98] text-white">
+          <SplitText as="span" text="Your Entire" className="block" />
+          <SplitText
+            as="span"
+            text="Business."
+            className="block italic"
+            delay={0.15}
+          />
           <span className="block">
-            <SplitText as="span" text="that " className="inline" delay={0.25} />
+            <SplitText as="span" text="Powered by " className="inline" delay={0.3} />
             <SplitText
               as="span"
-              text="move"
-              className="inline text-gradient"
-              delay={0.4}
+              text="AI."
+              className="inline italic text-muted-gradient"
+              delay={0.45}
             />
           </span>
         </h1>
@@ -82,24 +87,25 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.9 }}
-          className="mx-auto mt-7 max-w-xl text-base text-[var(--text-2)] sm:text-lg"
+          transition={{ delay: 0.8, duration: 0.9 }}
+          className="mx-auto mt-8 max-w-xl text-base text-[var(--text-2)] sm:text-lg"
         >
-          A cinematic creative studio building immersive brands, websites, and
-          products at the intersection of design, motion, and AI.
+          From automation to content, websites to analytics — one AI-powered
+          agency for everything your business needs. Faster. Smarter.
+          Unstoppable.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.9 }}
-          className="mt-10 flex items-center justify-center gap-4"
+          transition={{ delay: 1, duration: 0.9 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <MagneticButton
-            href="#work"
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition-transform"
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black"
           >
-            View our work
+            Book a Call
             <Icon
               name="arrow"
               size={18}
@@ -107,22 +113,21 @@ export default function Hero() {
             />
           </MagneticButton>
           <MagneticButton
-            href="#contact"
+            href="#process"
             className="rounded-full border border-[var(--border-strong)] px-7 py-3.5 text-sm text-white transition-colors hover:bg-white/5"
           >
-            Get in touch
+            See Process
           </MagneticButton>
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
       <motion.a
-        href="#about"
-        aria-label="Scroll to about"
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[11px] uppercase tracking-[0.3em] text-[var(--text-2)]"
+        href="#process"
+        aria-label="Scroll to process"
+        className="label absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.3 }}
       >
         <span className="flex flex-col items-center gap-2">
           Scroll

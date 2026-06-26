@@ -47,16 +47,14 @@ export default function Contact() {
     <section id="contact" className="relative mx-auto max-w-5xl px-6 py-28">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-2)]">
-            Contact
-          </p>
+          <p className="label">Get In Touch</p>
           <h2 className="display mt-3 text-4xl leading-[1.05] text-white sm:text-6xl">
-            Let&apos;s build something
-            <span className="text-gradient"> cinematic</span>
+            Your next project
+            <span className="italic text-muted-gradient"> starts here.</span>
           </h2>
           <p className="mt-6 max-w-sm text-[var(--text-2)]">
-            Tell us what you&apos;re imagining. We reply within two business
-            days.
+            Book a free strategy call. Tell us what you need — automation,
+            content, a website, or all of the above.
           </p>
           <dl className="mt-10 space-y-3 text-sm">
             <div className="flex gap-3">
@@ -67,13 +65,12 @@ export default function Contact() {
                 </a>
               </dd>
             </div>
-            <div className="flex gap-3">
-              <dt className="w-20 text-[var(--text-2)]">Phone</dt>
-              <dd>{CONTACT.phone}</dd>
-            </div>
-            <div className="flex gap-3">
-              <dt className="w-20 text-[var(--text-2)]">Studio</dt>
-              <dd>{CONTACT.location}</dd>
+            <div className="flex items-center gap-3">
+              <dt className="w-20 text-[var(--text-2)]">Status</dt>
+              <dd className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--status)]" />
+                {CONTACT.status}
+              </dd>
             </div>
           </dl>
         </div>

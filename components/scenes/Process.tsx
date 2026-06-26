@@ -56,17 +56,8 @@ export default function Process() {
   }, []);
 
   return (
-    <section id="process" ref={root} className="relative py-28">
+    <section ref={root} className="relative pb-28 pt-4">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="mb-16 max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-2)]">
-            Process
-          </p>
-          <h2 className="display mt-3 text-4xl text-white sm:text-6xl">
-            How the work happens
-          </h2>
-        </div>
-
         <div className="relative pl-10 sm:pl-16">
           {/* Connector track */}
           <div className="absolute left-[14px] top-2 h-[calc(100%-1rem)] w-px bg-white/10 sm:left-[22px]" />

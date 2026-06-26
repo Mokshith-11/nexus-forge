@@ -10,12 +10,14 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="relative mx-auto max-w-7xl px-6 py-28">
       <div className="mb-14 max-w-2xl">
-        <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-2)]">
-          Testimonials
-        </p>
+        <p className="label">Testimonials</p>
         <h2 className="display mt-3 text-4xl text-white sm:text-6xl">
-          Words from partners
+          Don&apos;t take our word for it.
         </h2>
+        <p className="mt-5 text-[var(--text-2)]">
+          See what forward-thinking business leaders say about working with
+          Nexus Forge.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -39,7 +41,8 @@ export default function Testimonials() {
                 </span>
                 <div>
                   <p className="text-sm font-medium text-white">{t.name}</p>
-                  <p className="text-xs text-[var(--text-2)]">{t.company}</p>
+                  <p className="text-xs text-[var(--text-2)]">{t.role}</p>
+                  <p className="label mt-1 text-[0.6rem]">{t.company}</p>
                 </div>
               </div>
             </GlassCard>

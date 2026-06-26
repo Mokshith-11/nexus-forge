@@ -12,11 +12,9 @@ export default function Faq() {
   return (
     <section id="faq" className="relative mx-auto max-w-3xl px-6 py-28">
       <div className="mb-14 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-2)]">
-          FAQ
-        </p>
+        <p className="label">FAQ</p>
         <h2 className="display mt-3 text-4xl text-white sm:text-6xl">
-          Good questions
+          Good questions.
         </h2>
       </div>
 

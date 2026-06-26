@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Cursor from "@/components/ui/Cursor";
 import Navbar from "@/components/layout/Navbar";
 import SceneProgress from "@/components/layout/SceneProgress";
+import Intro from "@/components/scenes/Intro";
 
-const display = Space_Grotesk({
+const display = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -19,39 +21,47 @@ const sans = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://aether.studio";
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const SITE_URL = "https://nexusforge.ai";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "ÆTHER — We craft worlds that move",
-    template: "%s · ÆTHER",
+    default: "Nexus Forge — AI Automation Agency | Custom AI Solutions & Workflow Automation",
+    template: "%s · Nexus Forge",
   },
   description:
-    "ÆTHER is a cinematic creative studio building immersive brands, websites, and products at the intersection of design, motion, and AI.",
+    "Nexus Forge is an all-in-one AI agency. From automation to content, websites to analytics — one AI-powered team for everything your business needs. Faster. Smarter. Unstoppable.",
   keywords: [
-    "creative agency",
-    "design studio",
+    "AI automation agency",
+    "workflow automation",
+    "AI agents",
+    "n8n automation",
+    "AI content",
     "web development",
-    "branding",
-    "AI automation",
-    "motion design",
-    "immersive web",
+    "data analytics",
+    "WhatsApp automation",
   ],
-  authors: [{ name: "ÆTHER Studio" }],
+  authors: [{ name: "Nexus Forge" }],
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "ÆTHER — We craft worlds that move",
+    title: "Nexus Forge — AI Automation Agency",
     description:
-      "A cinematic creative studio building immersive brands, websites, and products.",
-    siteName: "ÆTHER",
+      "Your entire business. Powered by AI. One AI-powered agency for automation, content, websites, and analytics.",
+    siteName: "Nexus Forge",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ÆTHER — We craft worlds that move",
+    title: "Nexus Forge — AI Automation Agency",
     description:
-      "A cinematic creative studio building immersive brands, websites, and products.",
+      "Your entire business. Powered by AI. One AI-powered agency for everything your business needs.",
   },
   robots: { index: true, follow: true },
 };
@@ -65,21 +75,16 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "ÆTHER",
+  name: "Nexus Forge",
   description:
-    "A cinematic creative studio building immersive brands, websites, and products.",
+    "An all-in-one AI automation agency — automation, AI agents, content, web development, and analytics.",
   url: SITE_URL,
-  email: "hello@aether.studio",
-  telephone: "+1-415-555-0142",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Lisbon",
-    addressCountry: "PT",
-  },
+  email: "hello@nexusforge.ai",
   sameAs: [
-    "https://instagram.com/aether.studio",
-    "https://twitter.com/aetherstudio",
-    "https://dribbble.com/aether",
+    "https://twitter.com/nexusforge",
+    "https://linkedin.com/company/nexusforge",
+    "https://github.com/nexusforge",
+    "https://instagram.com/nexusforge",
   ],
 };
 
@@ -87,18 +92,22 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+    >
       <body className="grain">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <a
-          href="#work"
+          href="#hero"
           className="sr-only focus:not-sr-only fixed left-4 top-4 z-[100] glass rounded-full px-4 py-2 text-sm"
         >
           Skip to content
         </a>
+        <Intro />
         <Cursor />
         <Navbar />
         <SceneProgress />

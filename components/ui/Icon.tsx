@@ -37,6 +37,18 @@ const PATHS: Record<string, React.ReactNode> = {
   ),
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   close: <path d="M6 6l12 12M18 6L6 18" />,
+  check: <path d="M4 12l5 5L20 6" />,
+  secure: (
+    <>
+      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+  bolt: <path d="M13 3L5 13h6l-1 8 8-10h-6z" />,
+  message: (
+    <path d="M4 5h16v11H9l-4 4v-4H4z" />
+  ),
+  spark: <path d="M12 4v6M12 14v6M4 12h6M14 12h6" />,
 };
 
 export default function Icon({

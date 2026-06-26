@@ -5,24 +5,28 @@ import { useEffect, useRef, useState } from "react";
 type Props = {
   value: number;
   suffix?: string;
+  decimals?: number;
   className?: string;
   duration?: number;
 };
 
 /**
- * Counts from 0 up to `value` once, when scrolled into view. Renders the final
- * value immediately under reduced-motion. The full label (e.g. "100+") is the
- * accessible text.
+ * Counts from 0 up to `value` once, when scrolled into view. Supports decimals
+ * (e.g. 4.2) and string suffixes (e.g. "k+", "x", "hrs"). Renders the final
+ * value immediately under reduced-motion. The full label is the accessible text.
  */
 export default function Counter({
   value,
   suffix = "",
+  decimals = 0,
   className = "",
   duration = 1600,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState(0);
   const started = useRef(false);
+
+  const format = (n: number) => n.toFixed(decimals);
 
   useEffect(() => {
     const node = ref.current;
@@ -45,7 +49,7 @@ export default function Counter({
             const p = Math.min(1, (now - start) / duration);
             // easeOutExpo
             const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-            setDisplay(Math.round(eased * value));
+            setDisplay(eased * value);
             if (p < 1) requestAnimationFrame(tick);
           };
           requestAnimationFrame(tick);
@@ -58,9 +62,9 @@ export default function Counter({
   }, [value, duration]);
 
   return (
-    <span ref={ref} className={className} aria-label={`${value}${suffix}`}>
+    <span ref={ref} className={className} aria-label={`${format(value)}${suffix}`}>
       <span aria-hidden="true">
-        {display}
+        {format(display)}
         {suffix}
       </span>
     </span>

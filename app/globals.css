@@ -2,22 +2,24 @@
 
 @theme {
   --color-bg: #050505;
-  --color-surface: #111111;
-  --color-accent: #4f7cff;
-  --color-accent-2: #9a7cff;
-  --color-text-2: #b3b3b3;
-  --font-display: var(--font-display), "Space Grotesk", sans-serif;
+  --color-surface: #0d0d0f;
+  --color-accent: #e9e6dd;
+  --color-text-2: #9a9a9e;
+  --font-display: var(--font-display), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
 }
 
 :root {
   --bg: #050505;
-  --surface: #111111;
+  --surface: #0d0d0f;
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.16);
-  --text-2: #b3b3b3;
-  --accent: #4f7cff;
-  --accent-2: #9a7cff;
+  --text-2: #9a9a9e;
+  /* Restrained "accent" is a warm off-white; a single cool tone is reserved
+     for tiny live-status affordances only. */
+  --accent: #ece8df;
+  --status: #5fd08a;
 }
 
 * {
@@ -46,8 +48,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: #ece8df;
+  color: #050505;
 }
 
 ::-webkit-scrollbar {
@@ -61,7 +63,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #ece8df;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -74,17 +76,31 @@ a {
   -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+/* Editorial accent: a soft italic serif emphasis rather than a color pop. */
+.text-em {
+  font-style: italic;
+  color: #ffffff;
+}
+
+.text-muted-gradient {
+  background: linear-gradient(180deg, #ffffff, #8a8a8e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .display {
-  font-family: var(--font-display), "Space Grotesk", sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  color: var(--text-2);
 }
 
 .grain::before {

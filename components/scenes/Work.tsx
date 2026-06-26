@@ -35,26 +35,14 @@ function ProjectCard({
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-      <div className="flex flex-wrap gap-2">
-        {project.categories.map((c) => (
-          <span
-            key={c}
-            className="glass rounded-full px-3 py-1 text-xs text-white"
-          >
-            {c}
-          </span>
-        ))}
-      </div>
+      <span className="label text-white/70">{project.category}</span>
       <h3 className="display mt-4 text-4xl text-white sm:text-5xl">
         {project.title}
       </h3>
       <p className="mt-2 max-w-md text-sm text-white/80">{project.blurb}</p>
-      <div className="mt-4 flex items-center justify-between text-xs text-white/70">
-        <span>
-          {project.client} · {project.year}
-        </span>
-        <span className="inline-flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-          View case <Icon name="arrow" size={14} />
+      <div className="mt-4 flex items-center justify-end text-xs text-white/70">
+        <span className="inline-flex items-center gap-1 opacity-70 transition-opacity group-hover:opacity-100">
+          View Case Study <Icon name="arrow" size={14} />
         </span>
       </div>
     </article>
@@ -98,11 +86,9 @@ export default function Work() {
     <section id="work" ref={root} className="relative overflow-hidden py-24">
       <div className="mx-auto mb-10 flex max-w-7xl items-end justify-between px-6">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-2)]">
-            Featured work
-          </p>
+          <p className="label">Selected Work</p>
           <h2 className="display mt-3 text-4xl text-white sm:text-6xl">
-            Selected projects
+            Featured projects.
           </h2>
         </div>
         <span className="hidden text-sm text-[var(--text-2)] md:block">
