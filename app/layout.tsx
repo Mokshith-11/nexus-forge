@@ -28,7 +28,16 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://nexusforge.ai";
+/**
+ * Resolves the canonical site URL. Set NEXT_PUBLIC_SITE_URL in Vercel once your
+ * custom domain is live (e.g. https://yourdomain.com). Falls back to the Vercel
+ * preview URL, then the project's vercel.app subdomain for local/preview use.
+ */
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://nexus-forge.vercel.app");
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
