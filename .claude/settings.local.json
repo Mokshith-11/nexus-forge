@@ -4,7 +4,9 @@
       "mcp__visualize__show_widget",
       "WebFetch(domain:artprize-shadows.com)",
       "Bash(git add *)",
-      "Bash(git -c user.name=Claude -c user.email=noreply@anthropic.com commit -q -m 'Add ÆTHER immersive agency design spec *)"
+      "Bash(git -c user.name=Claude -c user.email=noreply@anthropic.com commit -q -m 'Add ÆTHER immersive agency design spec *)",
+      "Bash(npm install *)",
+      "mcp__Claude_in_Chrome__computer"
     ]
   }
 }
