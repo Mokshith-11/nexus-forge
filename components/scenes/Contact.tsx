@@ -55,21 +55,20 @@ export default function Contact() {
 
     setSubmitting(true);
     try {
+      // FormData avoids a CORS preflight (multipart is a "simple" request),
+      // which is Web3Forms' most broadly-compatible submission method.
+      const fd = new FormData();
+      fd.append("access_key", WEB3FORMS_KEY);
+      fd.append("subject", "New enquiry from nexusforge.in");
+      fd.append("from_name", "Nexus Forge website");
+      fd.append("name", values.name);
+      fd.append("email", values.email);
+      fd.append("budget", values.budget || "Not specified");
+      fd.append("message", values.message);
+
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: "New enquiry from nexusforge.in",
-          from_name: "Nexus Forge website",
-          name: values.name,
-          email: values.email,
-          budget: values.budget || "Not specified",
-          message: values.message,
-        }),
+        body: fd,
       });
       const data = await res.json();
       if (data.success) {
