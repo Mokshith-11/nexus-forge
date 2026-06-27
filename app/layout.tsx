@@ -87,7 +87,7 @@ const jsonLd = {
   description:
     "An all-in-one AI automation agency — automation, AI agents, content, web development, and analytics.",
   url: SITE_URL,
-  email: "hello@nexusforge.in",
+  email: "vinnyvvinny8@gmail.com",
   sameAs: [
     "https://twitter.com/nexusforge",
     "https://linkedin.com/company/nexusforge",
