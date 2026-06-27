@@ -10,8 +10,14 @@ type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/** Premium contact form with client-side validation and a simulated success
- *  state. No network request is made. */
+/** Web3Forms access key — submissions are emailed to the studio inbox.
+ *  Set NEXT_PUBLIC_WEB3FORMS_KEY in the environment to enable real delivery;
+ *  without it the form falls back to a local success state. */
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+/** Premium contact form with client-side validation. When a Web3Forms key is
+ *  configured, submissions are delivered to the studio inbox; otherwise it
+ *  shows a local success state. */
 export default function Contact() {
   const [values, setValues] = useState({
     name: "",
@@ -21,6 +27,8 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = (): Errors => {
     const e: Errors = {};
@@ -31,11 +39,49 @@ export default function Contact() {
     return e;
   };
 
-  const handleSubmit = (ev: React.FormEvent) => {
+  const handleSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
+    if (submitting) return;
+    setSubmitError("");
     const e = validate();
     setErrors(e);
-    if (Object.keys(e).length === 0) setSent(true);
+    if (Object.keys(e).length > 0) return;
+
+    // No key configured → preserve the local success behaviour.
+    if (!WEB3FORMS_KEY) {
+      setSent(true);
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "New enquiry from nexusforge.in",
+          from_name: "Nexus Forge website",
+          name: values.name,
+          email: values.email,
+          budget: values.budget || "Not specified",
+          message: values.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSent(true);
+      } else {
+        setSubmitError("Something went wrong. Please email us directly.");
+      }
+    } catch {
+      setSubmitError("Network error. Please email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const field =
@@ -189,11 +235,16 @@ export default function Contact() {
 
                 <MagneticButton
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-black"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-black disabled:opacity-60"
                 >
-                  Send message
-                  <Icon name="arrow" size={18} />
+                  {submitting ? "Sending…" : "Send message"}
+                  {!submitting && <Icon name="arrow" size={18} />}
                 </MagneticButton>
+                {submitError && (
+                  <p className="text-center text-sm text-red-400" role="alert">
+                    {submitError}
+                  </p>
+                )}
               </motion.form>
             )}
           </AnimatePresence>
