@@ -8,6 +8,9 @@ import SceneProgress from "@/components/layout/SceneProgress";
 import Intro from "@/components/scenes/Intro";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -123,6 +126,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
+      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }
