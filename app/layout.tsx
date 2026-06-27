@@ -6,6 +6,8 @@ import Cursor from "@/components/ui/Cursor";
 import Navbar from "@/components/layout/Navbar";
 import SceneProgress from "@/components/layout/SceneProgress";
 import Intro from "@/components/scenes/Intro";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -118,6 +120,8 @@ export default function RootLayout({
         <Navbar />
         <SceneProgress />
         <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
