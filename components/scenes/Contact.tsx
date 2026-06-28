@@ -10,14 +10,9 @@ type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/** Web3Forms access key — submissions are emailed to the studio inbox.
- *  Set NEXT_PUBLIC_WEB3FORMS_KEY in the environment to enable real delivery;
- *  without it the form falls back to a local success state. */
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-
-/** Premium contact form with client-side validation. When a Web3Forms key is
- *  configured, submissions are delivered to the studio inbox; otherwise it
- *  shows a local success state. */
+/** Premium contact form with client-side validation. Submissions POST to the
+ *  same-origin /api/contact route, which relays them to the studio inbox via
+ *  Resend (no third-party domain in the browser → ad-blocker proof). */
 export default function Contact() {
   const [values, setValues] = useState({
     name: "",
@@ -47,31 +42,19 @@ export default function Contact() {
     setErrors(e);
     if (Object.keys(e).length > 0) return;
 
-    // No key configured → preserve the local success behaviour.
-    if (!WEB3FORMS_KEY) {
-      setSent(true);
-      return;
-    }
-
     setSubmitting(true);
     try {
-      // FormData avoids a CORS preflight (multipart is a "simple" request),
-      // which is Web3Forms' most broadly-compatible submission method.
-      const fd = new FormData();
-      fd.append("access_key", WEB3FORMS_KEY);
-      fd.append("subject", "New enquiry from nexusforge.in");
-      fd.append("from_name", "Nexus Forge website");
-      fd.append("name", values.name);
-      fd.append("email", values.email);
-      fd.append("budget", values.budget || "Not specified");
-      fd.append("message", values.message);
-
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: fd,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          budget: values.budget,
+          message: values.message,
+        }),
       });
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setSent(true);
       } else {
         setSubmitError("Something went wrong. Please email us directly.");
