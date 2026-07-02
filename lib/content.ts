@@ -303,7 +303,7 @@ export const CONTACT = {
   status: "Available for projects",
   /** WhatsApp number in international digits-only form (e.g. "919876543210").
    *  Leave empty to hide all WhatsApp buttons/links. */
-  whatsapp: "",
+  whatsapp: "919000851235",
   /** Pricing anchor shown near the contact form. */
   pricing: "Engagements from ₹15,000/month — scoped on a quick call.",
 };
