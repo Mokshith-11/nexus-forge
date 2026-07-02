@@ -6,6 +6,8 @@ import Cursor from "@/components/ui/Cursor";
 import Navbar from "@/components/layout/Navbar";
 import SceneProgress from "@/components/layout/SceneProgress";
 import Intro from "@/components/scenes/Intro";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import TrackClicks from "@/components/providers/TrackClicks";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -91,12 +93,6 @@ const jsonLd = {
     "An all-in-one AI automation agency — automation, AI agents, content, web development, and analytics.",
   url: SITE_URL,
   email: "vinnyvvinny8@gmail.com",
-  sameAs: [
-    "https://twitter.com/nexusforge",
-    "https://linkedin.com/company/nexusforge",
-    "https://github.com/nexusforge",
-    "https://instagram.com/nexusforge",
-  ],
 };
 
 export default function RootLayout({
@@ -123,6 +119,8 @@ export default function RootLayout({
         <Navbar />
         <SceneProgress />
         <SmoothScroll>{children}</SmoothScroll>
+        <WhatsAppButton />
+        <TrackClicks />
         <Analytics />
         <SpeedInsights />
       </body>

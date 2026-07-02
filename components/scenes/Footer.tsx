@@ -24,25 +24,27 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 text-sm sm:grid-cols-2">
-            <div>
-              <p className="label mb-3">Connect</p>
-              <ul className="space-y-2">
-                {SOCIALS.map((s) => (
-                  <li key={s.label}>
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-white/80 transition-colors hover:text-white"
-                      data-cursor
-                    >
-                      {s.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 gap-8 text-sm sm:grid-cols-2">
+            {SOCIALS.length > 0 && (
+              <div>
+                <p className="label mb-3">Connect</p>
+                <ul className="space-y-2">
+                  {SOCIALS.map((s) => (
+                    <li key={s.label}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-white/80 transition-colors hover:text-white"
+                        data-cursor
+                      >
+                        {s.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div>
               <p className="label mb-3">Reach us</p>
               <ul className="space-y-2 text-white/80">
@@ -51,6 +53,18 @@ export default function Footer() {
                     {CONTACT.email}
                   </a>
                 </li>
+                {CONTACT.whatsapp && (
+                  <li>
+                    <a
+                      href={`https://wa.me/${CONTACT.whatsapp}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor
+                    >
+                      WhatsApp
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

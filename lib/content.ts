@@ -301,15 +301,16 @@ export const FAQ: FaqItem[] = [
 export const CONTACT = {
   email: "vinnyvvinny8@gmail.com",
   status: "Available for projects",
+  /** WhatsApp number in international digits-only form (e.g. "919876543210").
+   *  Leave empty to hide all WhatsApp buttons/links. */
+  whatsapp: "",
+  /** Pricing anchor shown near the contact form. */
+  pricing: "Engagements from ₹15,000/month — scoped on a quick call.",
 };
 
-export const SOCIALS: NavItem[] = [
-  { label: "WhatsApp", href: "https://wa.me/0000000000" },
-  { label: "Twitter", href: "https://twitter.com/nexusforge" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/nexusforge" },
-  { label: "GitHub", href: "https://github.com/nexusforge" },
-  { label: "Instagram", href: "https://instagram.com/nexusforge" },
-];
+/** Real, live profiles only — dead links kill trust. Add entries here as the
+ *  actual accounts are created. */
+export const SOCIALS: NavItem[] = [];
 
 export const SCENES = [
   { id: "hero", label: "Home" },

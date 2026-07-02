@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROJECTS } from "@/lib/content";
-import Icon from "@/components/ui/Icon";
 
 function ProjectCard({
   project,
@@ -40,11 +39,6 @@ function ProjectCard({
         {project.title}
       </h3>
       <p className="mt-2 max-w-md text-sm text-white/80">{project.blurb}</p>
-      <div className="mt-4 flex items-center justify-end text-xs text-white/70">
-        <span className="inline-flex items-center gap-1 opacity-70 transition-opacity group-hover:opacity-100">
-          View Case Study <Icon name="arrow" size={14} />
-        </span>
-      </div>
     </article>
   );
 }

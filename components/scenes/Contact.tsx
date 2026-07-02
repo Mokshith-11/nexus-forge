@@ -81,8 +81,11 @@ export default function Contact() {
             <span className="italic text-muted-gradient"> starts here.</span>
           </h2>
           <p className="mt-6 max-w-sm text-[var(--text-2)]">
-            Book a free strategy call. Tell us what you need — automation,
-            content, a website, or all of the above.
+            Book a strategy call. Tell us what you need — automation, content,
+            a website, or all of the above.
+          </p>
+          <p className="mt-4 inline-block rounded-full border border-[var(--border)] px-4 py-2 text-sm text-white/80">
+            {CONTACT.pricing}
           </p>
           <dl className="mt-10 space-y-3 text-sm">
             <div className="flex gap-3">
