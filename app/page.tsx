@@ -10,10 +10,12 @@ import Testimonials from "@/components/scenes/Testimonials";
 import Faq from "@/components/scenes/Faq";
 import Contact from "@/components/scenes/Contact";
 import Footer from "@/components/scenes/Footer";
+import SeoJsonLd from "@/components/SeoJsonLd";
 
 export default function Home() {
   return (
     <main>
+      <SeoJsonLd />
       <Hero />
       <TrustedBy />
       <Manifesto />
