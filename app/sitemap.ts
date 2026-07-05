@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CITY_SLUGS } from "@/lib/cities";
+import { POSTS } from "@/lib/posts";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://nexusforge.in";
@@ -11,7 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/website-design",
     "/ai-automation",
     "/whatsapp-automation",
+    "/blog",
     ...CITY_SLUGS.map((c) => `/${c}`),
+    ...POSTS.map((p) => `/blog/${p.slug}`),
   ];
   return routes.map((path) => ({
     url: `${SITE_URL}${path}`,

@@ -36,7 +36,7 @@ export default function Navbar() {
         style={{ borderWidth: 1, borderStyle: "solid" }}
       >
         <a
-          href="#hero"
+          href="/#hero"
           className="label text-white"
           aria-label="Nexus Forge home"
         >
@@ -60,7 +60,7 @@ export default function Navbar() {
 
         <div className="hidden md:block">
           <MagneticButton
-            href="#contact"
+            href="/#contact"
             className="glass rounded-full px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
           >
             Get Started
@@ -97,7 +97,7 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-block rounded-full bg-white px-5 py-2 text-black"
               >
