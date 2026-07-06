@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/website-design",
     "/ai-automation",
     "/whatsapp-automation",
+    "/demo",
     "/blog",
     ...CITY_SLUGS.map((c) => `/${c}`),
     ...POSTS.map((p) => `/blog/${p.slug}`),

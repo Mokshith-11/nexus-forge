@@ -113,10 +113,10 @@ export default function Hero() {
             />
           </MagneticButton>
           <MagneticButton
-            href="#process"
+            href="/demo"
             className="rounded-full border border-[var(--border-strong)] px-7 py-3.5 text-sm text-white transition-colors hover:bg-white/5"
           >
-            See Process
+            Try live AI demo
           </MagneticButton>
         </motion.div>
       </div>
